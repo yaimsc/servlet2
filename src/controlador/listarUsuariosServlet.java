@@ -1,13 +1,60 @@
 package controlador;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Usuario;
+
 public class listarUsuariosServlet extends HttpServlet{
 
-	public void doGet (HttpServletRequest request, HttpServletResponse response){
+	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		
+		String nombreUsuario = request.getParameter("nombre"); 
+		
+		// creamos un arraylist y rellenamos la lista 
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 
+		Usuario usuario = new Usuario(); 
+		usuario.setNombre("Jon");
+		usuarios.add(usuario); 
+		usuario = new Usuario(); 
+		usuario.setNombre("Imanol");
+		usuarios.add(usuario); 
 		
 		
+		//le damos esos atributos a los usuarios
+		request.setAttribute("usuarios", usuarios);
+		
+		//PARA QUE MANDE A ESE JSP QUE NOSOTROS PONEMOS
+		RequestDispatcher rd = request.getRequestDispatcher("listaUsuarios.jsp"); 
+		rd.forward(request, response);
+	}
+	
+	
+	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		
+		String nombreUsuario = request.getParameter("nombre"); 
+		
+		// creamos un arraylist y rellenamos la lista 
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 
+		Usuario usuario = new Usuario(); 
+		usuario.setNombre("Yaiza");
+		usuarios.add(usuario); 
+		usuario = new Usuario(); 
+		usuario.setNombre("Iñaki");
+		usuarios.add(usuario); 
+		
+		
+		//le damos esos atributos a los usuarios
+		request.setAttribute("usuarios", usuarios);
+		
+		//PARA QUE MANDE A ESE JSP QUE NOSOTROS PONEMOS
+		RequestDispatcher rd = request.getRequestDispatcher("listaUsuarios.jsp"); 
+		rd.forward(request, response);
 	}
 }
