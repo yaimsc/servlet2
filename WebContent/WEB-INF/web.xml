@@ -13,13 +13,23 @@
 <!-- Publicamos nuestro servlet aqui -->
     
     <servlet>
-        <servlet-name>ListarUsuarios</servlet-name>
+        <servlet-name>ListarUsuariosServlet</servlet-name>
         <servlet-class>controlador.listarUsuariosServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ListarUsuarios</servlet-name>
-        <url-pattern>/listaUsuarios</url-pattern>
+        <servlet-name>ListarUsuariosServlet</servlet-name>
+        <url-pattern>/listarUsuariosServlet</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>logear</servlet-name>
+        <servlet-class>controlador.logear</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logear</servlet-name>
+        <url-pattern>/logear</url-pattern>
     </servlet-mapping>
 
 <!-- Fin de la publicacion de servlets -->

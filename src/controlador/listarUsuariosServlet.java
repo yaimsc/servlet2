@@ -8,8 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.Usuario;
+
 
 public class listarUsuariosServlet extends HttpServlet{
 
@@ -17,22 +19,35 @@ public class listarUsuariosServlet extends HttpServlet{
 		
 		String nombreUsuario = request.getParameter("nombre"); 
 		
-		// creamos un arraylist y rellenamos la lista 
-		ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 
-		Usuario usuario = new Usuario(); 
-		usuario.setNombre("Jon");
-		usuarios.add(usuario); 
-		usuario = new Usuario(); 
-		usuario.setNombre("Imanol");
-		usuarios.add(usuario); 
+		HttpSession session = request.getSession(); 
+		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado"); 
 		
+		if(usuarioLogueado != null){
 		
-		//le damos esos atributos a los usuarios
-		request.setAttribute("usuarios", usuarios);
+			// creamos un arraylist y rellenamos la lista 
+			ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 
+			Usuario usuario = new Usuario(); 
+			usuario.setNombre("Jon");
+			usuarios.add(usuario); 
+			usuario = new Usuario(); 
+			usuario.setNombre("Imanol");
+			usuarios.add(usuario); 
+			usuario = new Usuario(); 
+			usuario.setNombre(usuarioLogueado.getNombre());
+			usuarios.add(usuario); 
+			
+			
+			//le damos esos atributos a los usuarios
+			request.setAttribute("usuarios", usuarios);
+			
+			//PARA QUE MANDE A ESE JSP QUE NOSOTROS PONEMOS
+			RequestDispatcher rd = request.getRequestDispatcher("listaUsuarios.jsp"); 
+			rd.forward(request, response);
 		
-		//PARA QUE MANDE A ESE JSP QUE NOSOTROS PONEMOS
-		RequestDispatcher rd = request.getRequestDispatcher("listaUsuarios.jsp"); 
-		rd.forward(request, response);
+		}else{
+			RequestDispatcher rd = request.getRequestDispatcher("adios.html"); 
+			rd.forward(request, response);
+		}
 	}
 	
 	
@@ -47,6 +62,9 @@ public class listarUsuariosServlet extends HttpServlet{
 		usuarios.add(usuario); 
 		usuario = new Usuario(); 
 		usuario.setNombre("Iñaki");
+		usuarios.add(usuario); 
+		usuario = new Usuario(); 
+		usuario.setNombre(nombreUsuario);
 		usuarios.add(usuario); 
 		
 		

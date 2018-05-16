@@ -4,13 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Fromularo</title>
+<title>Formulario</title>
 </head>
 <body>
-	<a href"/listaUsuarios?nombre=Juan">Prueba Get</a>
-	<form action="/listaUsuarios" methos="post">
-		<input tupe="text" name="nombre">
-		<input type="sumbit" value="Enviar">
+	<p>Prueba Get</p>
+	<form action="./listarUsuariosServlet" method="get">
+		<input type="text" name="nombre">
+		<input type="submit" value="Enviar">
+	</form>
+	<p>Prueba Post</p>
+	<form action="./listarUsuariosServlet" method="post">
+		<input type="text" name="nombre">
+		<input type="submit" value="Enviar">
 	</form>
 </body>
 </html>
