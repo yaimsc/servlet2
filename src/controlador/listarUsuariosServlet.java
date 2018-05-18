@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import modelo.Usuario;
+import modelo.UsuarioModelo;
 
 
 public class listarUsuariosServlet extends HttpServlet{
@@ -24,8 +25,13 @@ public class listarUsuariosServlet extends HttpServlet{
 		
 		if(usuarioLogueado != null){
 		
-			// creamos un arraylist y rellenamos la lista 
-			ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 
+			//llamamos al modelo 
+			
+			UsuarioModelo usuarioModelo = new UsuarioModelo(); 
+			
+			
+			// creamos un arraylist y seleccionamos todos nuestros usuarios de la BBDD y rellenamos la lista 
+			ArrayList<Usuario> usuarios = usuarioModelo.selectAll();  
 			Usuario usuario = new Usuario(); 
 			usuario.setNombre("Jon");
 			usuarios.add(usuario); 
