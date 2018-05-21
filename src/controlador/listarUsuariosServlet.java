@@ -33,8 +33,8 @@ public class listarUsuariosServlet extends HttpServlet{
 			// creamos un arraylist y seleccionamos todos nuestros usuarios de la BBDD y rellenamos la lista 
 			ArrayList<Usuario> usuarios = usuarioModelo.selectAll();  
 			Usuario usuario = new Usuario(); 
-			usuario.setNombre("Jon");
-			usuarios.add(usuario); 
+			//usuario.setNombre("Jon");
+			//usuarios.add(usuario); 
 			usuario = new Usuario(); 
 			usuario.setNombre("Imanol");
 			usuarios.add(usuario); 
@@ -66,9 +66,11 @@ public class listarUsuariosServlet extends HttpServlet{
 		Usuario usuario = new Usuario(); 
 		usuario.setNombre("Yaiza");
 		usuarios.add(usuario); 
+		
 		usuario = new Usuario(); 
 		usuario.setNombre("Iñaki");
 		usuarios.add(usuario); 
+		
 		usuario = new Usuario(); 
 		usuario.setNombre(nombreUsuario);
 		usuarios.add(usuario); 
