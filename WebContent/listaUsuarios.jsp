@@ -11,6 +11,7 @@
 <%
 
 ArrayList<Usuario> usuarios = (ArrayList) request.getAttribute("usuarios"); 
+
 %>
 
 
@@ -27,11 +28,14 @@ ArrayList<Usuario> usuarios = (ArrayList) request.getAttribute("usuarios");
 	<div class="conrtainer">
 		<div class="row">
 			<div class="col" align="center">
+			<h1>Bienvenido ${sessionScope.usuarioLogueado.getNombre()}</h1>
+			<br><hr><br>
 			<h1>La lista de Usuarios</h1><hr><br>
+		
 	
 			<%
-				for(Usuario usuario : usuarios){
-					out.println(usuario.getNombre() + "<hr><br>"); 
+				for(Usuario usuario1 : usuarios){
+					out.println(usuario1.getNombre() + "<hr><br>"); 
 				}
 			%>
 			</div>

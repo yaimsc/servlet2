@@ -12,7 +12,8 @@ public class Conector {
 	Conector() {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
-				this.conexion = DriverManager.getConnection("jdbc:mysql://" + Config.HOST + "/" + Config.BBDD + "?zeroDateTimeBehavior=convertToNull", Config.USERNAME, Config.PASSWORD );
+				//this.conexion = DriverManager.getConnection("jdbc:mysql://" + Config.HOST + "/" + Config.BBDD + "?zeroDateTimeBehavior=convertToNull", Config.USERNAME, Config.PASSWORD );
+				this.conexion=DriverManager.getConnection("jdbc:mysql://localhost/biblioteca", "root", ""); 
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {

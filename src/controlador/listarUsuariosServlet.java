@@ -18,7 +18,7 @@ public class listarUsuariosServlet extends HttpServlet{
 
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		String nombreUsuario = request.getParameter("nombre"); 
+		//String nombreUsuario = request.getParameter("nombre"); 
 		
 		HttpSession session = request.getSession(); 
 		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado"); 
@@ -28,7 +28,6 @@ public class listarUsuariosServlet extends HttpServlet{
 			//llamamos al modelo 
 			
 			UsuarioModelo usuarioModelo = new UsuarioModelo(); 
-			
 			
 			// creamos un arraylist y seleccionamos todos nuestros usuarios de la BBDD y rellenamos la lista 
 			ArrayList<Usuario> usuarios = usuarioModelo.selectAll();  
